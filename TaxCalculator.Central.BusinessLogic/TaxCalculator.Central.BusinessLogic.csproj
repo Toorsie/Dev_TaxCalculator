@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaxCalculator.Central.Data.Models\TaxCalculator.Central.Data.Models.csproj" />
+    <ProjectReference Include="..\TaxCalculator.Central.Data.Repository\TaxCalculator.Central.Data.Repository.csproj" />
+    <ProjectReference Include="..\TaxCalculator.Central.Models\TaxCalculator.Central.Models.csproj" />
+  </ItemGroup>
+
+</Project>

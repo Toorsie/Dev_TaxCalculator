@@ -1,0 +1,34 @@
+﻿@model List<TaxCalculator.Central.Models.TaxCalculatorDTO>
+
+<div class="text-center">
+    <h4>Your prior submitted tax calculations:</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Annual Amount earned</th>
+                <th>Total tax payable</th>
+                <th>Net amount</th>
+                <th>Year</th>
+                <th>Postal Code</th>
+                <th>Tax calculation</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>R @item.AnnualAmount</td>
+            <td>R @item.TaxPayableAmount</td>
+            <td>R @item.NetAmount</td>
+            <th>@item.Year</th>
+            <td>@item.PostalCode.PostalCode</td>
+            <td>@item.PostalCode.TaxCalculationType</td>
+            <td><a class="btn btn-sm btn-primary" href="@Url.Action("SubmittedTax", "Home", new {rowGuid = item.TaxInputGuid})" >View</a> 
+                <a class="btn btn-sm btn-danger" href="@Url.Action("DeleteSubmittedTax", "Home", new {rowGuid = item.TaxInputGuid})">Delete</a>
+            </td>
+        </tr>
+    }
+    </table>
+
+    
+</div>

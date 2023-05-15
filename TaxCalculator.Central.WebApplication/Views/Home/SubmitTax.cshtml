@@ -1,0 +1,40 @@
+﻿@model TaxCalculator.Central.Models.TaxInputDTO
+
+<div class="text-center">
+    <h2>Tax submitting</h2>
+    <p>Fill in the form below to submit your tax</p>
+     @using (Html.BeginForm("SubmitTaxCalculation", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                
+                <div class="form-group">
+                    <div class="col-12 ">
+                        @Html.LabelFor(e => e.AnnualAmount, new { @class = "col-12 col-md-4  mb-0 mb-md-2 control-label pt-1 pb-1" })
+                        @Html.HiddenFor(e => e.RowGuid)
+                        @Html.EditorFor(m => m.AnnualAmount, new {htmlAttributes = new { @class = "form-control mx-auto", @placeholder = "Amount", @style="max-width:280px" }})
+                        @Html.ValidationMessageFor(m => m.AnnualAmount, "", new { @class = "text-danger mx-auto" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-12 ">
+                        @Html.LabelFor(e => e.Year, new { @class = "col-12 col-md-4  mb-0 mb-md-2 control-label pt-1 pb-1" })
+                        @Html.EditorFor(m => m.Year, new {htmlAttributes = new { @class = "form-control mx-auto", @placeholder = "Year", @style="max-width:280px"  }})
+                        @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger mx-auto" })
+                    </div>
+                </div>
+                <div class="form-group">
+                <div class="col-12">
+                    @Html.LabelFor(e => e.PostalCodeGuid, new { @class = "col-12 col-md-4  mb-0 mb-md-2 control-label pt-1 pb-1" })
+                    @Html.DropDownListFor(e => e.PostalCodeGuid, new SelectList(ViewBag.PostalCodeList, "RowGuid", "PostalCode", Model.PostalCodeGuid.ToString()), "- Select Postal code -", new { @class = "form-control mx-auto",  @style="max-width:280px" })
+                    @Html.ValidationMessageFor(e => e.PostalCodeGuid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-12">
+                        <input type="submit" value="Submit" class="btn btn-success" />
+                    </div>
+                </div>
+                <hr />
+            }
+</div>
